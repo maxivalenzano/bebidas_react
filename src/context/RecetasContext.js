@@ -18,6 +18,7 @@ const RecetasProvider = (props) => {
             const obtenerRecetas = async () => {
                 const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${nombre}&c=${categoria}`;
                 const resultado = await axios.get(url);
+                console.log(resultado.data.drinks)
                 guardarRecetas(resultado.data.drinks);
             }
             obtenerRecetas();
@@ -26,7 +27,7 @@ const RecetasProvider = (props) => {
 
     return (
         <RecetasContext.Provider
-            value={{buscarRecetas, guardarConsultar}}
+            value={{recetas, buscarRecetas, guardarConsultar}}
         >
             {props.children}
         </RecetasContext.Provider>
